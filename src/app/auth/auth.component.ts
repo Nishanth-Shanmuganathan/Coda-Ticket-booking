@@ -23,6 +23,9 @@ export class AuthComponent implements OnInit {
   constructor(private authService: AuthService, private route: Router) {}
 
   ngOnInit(): void {
+    localStorage.removeItem('token')
+    this.authService.loggedIn.next(null)
+
     this.signupForm = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.email]),
       password: new FormControl(null, [
@@ -38,8 +41,8 @@ export class AuthComponent implements OnInit {
     });
 
     this.signinForm = new FormGroup({
-      email: new FormControl('nishanth@test.com', [Validators.required, Validators.email]),
-      password: new FormControl('password', [
+      email: new FormControl(null, [Validators.required, Validators.email]),
+      password: new FormControl(null, [
         Validators.required,
         Validators.minLength(8),
         Validators.maxLength(12),
@@ -61,12 +64,10 @@ export class AuthComponent implements OnInit {
       this.helperStatus = 'pristine';
       return;
     }
-    // console.log(this.signinForm.value);
     const loginCredentials: Auth = {
       email: this.signinForm.value.email,
       password: this.signinForm.value.password,
     };
-    // console.log(loginCredentials);
     this.authService.loginUser(loginCredentials).subscribe(
       (res) => {
         this.helperStatus = 'pristine';
@@ -92,7 +93,6 @@ export class AuthComponent implements OnInit {
       password: this.signupForm.value.password,
       confirmPassword: this.signupForm.value.confirmPassword,
     };
-    console.log(regCredentials);
     this.authService
       .registerUser(regCredentials)
       .subscribe(

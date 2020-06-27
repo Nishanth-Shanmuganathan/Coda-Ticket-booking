@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -8,15 +9,21 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
+  loggedIn;
   constructor(
-    private route:Router
+    private route:Router,
+    private authService:AuthService
   ) { }
 
   ngOnInit(): void {
+    this.authService.loggedIn.subscribe(res=>{
+      this.loggedIn = !!res
+    })
   }
 
   logout(){
     localStorage.removeItem('token')
+    this.authService.loggedIn.next(null)
     this.route.navigate(['/'])
   }
 }

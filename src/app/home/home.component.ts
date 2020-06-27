@@ -31,17 +31,6 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // this.bookingService.gettingSeats('kingkong').subscribe(res=>{
-    //   this.movieName='kingkong'
-    //   if(!res.movie.seats){
-    //     this.bookedSeats = []
-    //     return;
-    //   }
-    //   res.movie.seats.forEach(ele=>this.bookSeat(ele))
-    //   console.log(res);
-      
-    // })
-
     for(let i=1;i<=100;i++){
       if(i <= 10){
         this.firstRow.push(i);
@@ -128,14 +117,3 @@ export class HomeComponent implements OnInit {
     })
   }
 }
-
-// console.log(this.firstRow);
-// console.log(this.secondRow);
-// console.log(this.thirdRow);
-// console.log(this.fourthRow);
-// console.log(this.fifthRow);
-// console.log(this.sixthRow);
-// console.log(this.seventhRow);
-// console.log(this.eighthRow);
-// console.log(this.ninethRow);
-// console.log(this.tenthRow);

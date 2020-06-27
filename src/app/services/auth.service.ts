@@ -40,8 +40,6 @@ export class AuthService {
       )
       .pipe(
         tap((res) => {
-          console.log(res);
-          
           this.token = res.token;
           localStorage.setItem('token', this.token);
           this.loggedIn.next(this.token);

@@ -10,7 +10,7 @@ const authRouter = express.Router()
 authRouter.use(bodyParser.json())
 
 authRouter.post('/login',async (req, res) => {
-  // console.log('Login');
+  // og('Login');
   
   const email =req.body.email;
   const password =req.body.password;
@@ -22,7 +22,6 @@ authRouter.post('/login',async (req, res) => {
       })
     }
     
-    console.log(fetchedUser, fetchedUser.password);
     
     const passwordMatch = await bcrypt.compare(password, fetchedUser.password)
     if (!passwordMatch) {
@@ -59,7 +58,6 @@ authRouter.post('/register',async (req, res) => {
         email: req.body.email,
         password: hash
       })
-      console.log(user);
       
       const response = await user.save()
 

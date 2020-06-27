@@ -1,5 +1,5 @@
 <main fxFlex="100" fxLayout="row" fxLayoutAlign="space-evenly stretch">
-  <mat-card class="form">
+  <div class="form">
     <form
       novalidate
       [formGroup]="signupForm"
@@ -11,7 +11,7 @@
           helperServerError
         }}</mat-error>
         <tr>
-          <td colspan="2">
+          <td >
             <mat-form-field fxFill>
               <mat-label>Email Id</mat-label>
               <input
@@ -34,7 +34,7 @@
           </td>
         </tr>
         <tr>
-          <td colspan="2">
+          <td >
             <mat-form-field fxFill>
               <mat-label>Password</mat-label>
               <input
@@ -69,7 +69,7 @@
           </td>
         </tr>
         <tr>
-          <td colspan="2">
+          <td >
             <mat-form-field fxFill>
               <mat-label>Confirm Password</mat-label>
               <input
@@ -125,16 +125,10 @@
               >
             </button>
           </td>
-          <td>
-            <button
-              type="button"
-              mat-raised-button
-              class="btn-block"
-              color="accent"
-              (click)="toggleUser()"
-            >
-              <span>Login</span>
-            </button>
+        </tr>
+        <tr>
+          <td style="text-align: center;">
+            Already an user ? <a (click)="toggleUser()">Login</a>
           </td>
         </tr>
       </table>
@@ -147,7 +141,7 @@
         }}</mat-error>
         <table cellpadding="5">
           <tr>
-            <td colspan="2">
+            <td >
               <mat-form-field fxFill>
                 <mat-label>Email Id</mat-label>
                 <input
@@ -169,7 +163,7 @@
             </td>
           </tr>
           <tr>
-            <td colspan="2">
+            <td >
               <mat-form-field fxFill>
                 <mat-label>Password</mat-label>
                 <input
@@ -218,20 +212,12 @@
                 >
               </button>
             </td>
-            <td>
-              <button
-                type="button"
-                mat-raised-button
-                class="btn-block"
-                color="accent"
-                (click)="toggleUser()"
-              >
-                <span>Register</span>
-              </button>
-            </td>
+          </tr>
+          <tr style="text-align: center;">
+            <td>New User ? <a (click)="toggleUser()">Register</a></td>
           </tr>
         </table>
       </form>
     </ng-template>
-  </mat-card>
+  </div>
 </main>

@@ -12,7 +12,6 @@ const app = express()
 app.use(express.json())
 app.use(bodyParser.json())
 app.use(cors())
-// console.log('hiii');
 
 app.use('/authentication',authRouter)
 app.use('/fetchBookings',authenticate ,seatsRouter)

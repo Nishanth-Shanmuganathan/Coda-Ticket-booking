@@ -9,7 +9,6 @@ seatsRouter.use(bodyParser.json())
 
 seatsRouter.get('/:movie',async (req,res)=>{
     const name = req.params.movie
-    console.log(name);
     
     try {
         const movie = await Movie.findOne({name})
@@ -26,14 +25,11 @@ seatsRouter.get('/:movie',async (req,res)=>{
 
 seatsRouter.post('/:movie',async (req,res)=>{
     const name = req.params.movie
-    console.log(name);
     
     try {
         const movie = await Movie.findOne({name})
         movie.seats = req.body.arr
-        const ins = await movie.save()
-        console.log(ins);
-        
+        await movie.save()
         return res.status(200).json({movie})
     } catch (error) {
         console.log(error);

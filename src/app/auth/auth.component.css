@@ -9,3 +9,14 @@ main{
     padding: 50px;
     margin:auto
 }
+a{
+    cursor: pointer;
+    color: #3F51B5;
+}
+.server-error {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid red;
+    text-align: center;
+    background-color: rgb(255, 239, 239);
+  }
