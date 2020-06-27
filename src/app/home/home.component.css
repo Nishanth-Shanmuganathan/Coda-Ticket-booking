@@ -1,0 +1,37 @@
+:host{
+    display: block;
+    height: 100%;
+}
+tr:nth-child(6)>*{
+    padding-top: 10px;
+    /* background-color: black; */
+}
+
+td:nth-child(6){
+    padding-left: 10px;
+}
+
+mat-icon{
+    color: silver;
+}
+
+.red{
+    color: rgba(255, 0, 0, 0.7);
+}
+.green{
+    color: rgba(0, 151, 0, 0.7);
+}
+
+section{
+
+    flex-wrap: wrap;
+}
+mat-card{
+    margin: 20px 20px;
+    min-width: 250px;
+    cursor: pointer;
+}
+
+.selected{
+    transform: scale(1.2) !important;
+}

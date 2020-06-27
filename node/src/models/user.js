@@ -1,20 +1,10 @@
 const mongoose = require('mongoose')
 const uniqueValidator = require('mongoose-unique-validator')
 
-const booking = {
-    movie:{
-        type:String
-    },
-    seats:[Number]
-}
 
 const userSchema = mongoose.Schema({
   email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
-  bookings:{
-      type:[booking],
-      default:[]
-  }
+  password: { type: String, required: true }
 })
 
 userSchema.plugin(uniqueValidator)

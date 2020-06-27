@@ -1,1 +1,115 @@
-<p>home works!</p>
+<main  fxFlex="100" fxFlex.gt-md="80" fxFlexAlign="center" fxLayout="row" fxLayoutAlign="space-evenly center">
+    
+<section fxFlex="50" fxLayout="column" fxLayoutAlign="center center" >
+    <mat-card [ngClass]="{selected: movieName==='kingkong'}"   (click)="getMovieDetails('kingkong')">
+        <mat-card-header fxLayoutAlign="start center">
+            <img mat-card-avatar src="../../assets/images/kingkong.jpg" alt="King Kong">
+            <mat-card-title>King Kong</mat-card-title>
+          </mat-card-header>
+    </mat-card>
+    <mat-card [ngClass]="{selected: movieName==='avatar'}" (click)="getMovieDetails('avatar')">
+        <mat-card-header fxLayoutAlign="start center">
+            <img mat-card-avatar src="../../assets/images/avatar.jpg" alt="Avatar">
+            <mat-card-title>Avatar</mat-card-title>
+          </mat-card-header>
+    </mat-card>
+    <mat-card [ngClass]="{selected: movieName==='aladin'}"  (click)="getMovieDetails('aladin')">
+        <mat-card-header fxLayoutAlign="start center">
+            <img mat-card-avatar src="../../assets/images/aladin.jpg" alt="Aladin">
+            <mat-card-title>Aladin</mat-card-title>
+          </mat-card-header>
+    </mat-card>
+    <mat-card [ngClass]="{selected: movieName==='master'}" (click)="getMovieDetails('master')" >
+        <mat-card-header fxLayoutAlign="start center">
+            <img mat-card-avatar src="../../assets/images/master.jpg" alt="Master">
+            <mat-card-title>Master</mat-card-title>
+          </mat-card-header>
+    </mat-card>
+    <mat-card [ngClass]="{selected: movieName==='kkk'}" (click)="getMovieDetails('kkk')">
+        <mat-card-header fxLayoutAlign="start center">
+            <img mat-card-avatar src="../../assets/images/kkk.jpg" alt="K K K">
+            <mat-card-title>K K K</mat-card-title>
+          </mat-card-header>
+    </mat-card>
+
+</section>
+
+<table >
+    <tr>
+        <td *ngFor="let item of firstRow;let i=index">
+            <button mat-icon-button (click)="bookSeat(item)">
+                <mat-icon [ngClass]="{ green:bookedSeats.includes(item),red:restrictedSeats.includes(item)}">event_seat</mat-icon>
+            </button>
+        </td>
+    </tr>
+    <tr>
+        <td *ngFor="let item of secondRow;let i=index">
+            <button mat-icon-button (click)="bookSeat(item)">
+                <mat-icon [ngClass]="{ green:bookedSeats.includes(item),red:restrictedSeats.includes(item)}" >event_seat</mat-icon>
+            </button>
+        </td>
+    </tr>
+    <tr>
+        <td *ngFor="let item of thirdRow;let i=index">
+            <button mat-icon-button (click)="bookSeat(item)">
+                <mat-icon [ngClass]="{ green:bookedSeats.includes(item),red:restrictedSeats.includes(item)}">event_seat</mat-icon>
+            </button>
+        </td>
+    </tr>
+    <tr>
+        <td *ngFor="let item of fourthRow;let i=index">
+            <button mat-icon-button (click)="bookSeat(item)">
+                <mat-icon [ngClass]="{ green:bookedSeats.includes(item),red:restrictedSeats.includes(item)}">event_seat</mat-icon>
+            </button>
+        </td>
+    </tr>
+    <tr>
+        <td *ngFor="let item of fifthRow;let i=index">
+            <button mat-icon-button (click)="bookSeat(item)">
+                <mat-icon [ngClass]="{ green:bookedSeats.includes(item),red:restrictedSeats.includes(item)}">event_seat</mat-icon>
+            </button>
+        </td>
+    </tr>
+    <tr>
+        <td *ngFor="let item of sixthRow;let i=index">
+            <button mat-icon-button (click)="bookSeat(item)">
+                <mat-icon [ngClass]="{ green:bookedSeats.includes(item),red:restrictedSeats.includes(item)}">event_seat</mat-icon>
+            </button>
+        </td>
+    </tr>
+    <tr>
+        <td *ngFor="let item of seventhRow;let i=index">
+            <button mat-icon-button (click)="bookSeat(item)">
+                <mat-icon [ngClass]="{ green:bookedSeats.includes(item),red:restrictedSeats.includes(item)}">event_seat</mat-icon>
+            </button>
+        </td>
+    </tr>
+    <tr>
+        <td *ngFor="let item of eighthRow;let i=index">
+            <button mat-icon-button (click)="bookSeat(item)">
+                <mat-icon [ngClass]="{ green:bookedSeats.includes(item),red:restrictedSeats.includes(item)}">event_seat</mat-icon>
+            </button>
+        </td>
+    </tr>
+    <tr>
+        <td *ngFor="let item of ninethRow;let i=index">
+            <button mat-icon-button (click)="bookSeat(item)">
+                <mat-icon [ngClass]="{ green:bookedSeats.includes(item),red:restrictedSeats.includes(item)}">event_seat</mat-icon>
+            </button>
+        </td>
+    </tr>
+    <tr>
+        <td *ngFor="let item of tenthRow;let i=index">
+            <button mat-icon-button (click)="bookSeat(item)">
+                <mat-icon [ngClass]="{ green:bookedSeats.includes(item),red:restrictedSeats.includes(item)}">event_seat</mat-icon>
+            </button>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="10" style="text-align: center;padding: 20px;">
+            <button mat-raised-button color="warn" (click)="confirmBooking()">{{ helperBook ? 'Book Now!' : 'Booked!'}}</button>
+        </td>
+    </tr>
+</table>
+
+</main>

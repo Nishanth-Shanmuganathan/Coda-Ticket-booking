@@ -1,9 +1,12 @@
+const path = require('path')
+
 const cors = require('cors')
 const express = require('express')
 const mongoose =require('mongoose')
 const bodyParser = require('body-parser')
 
 const {authRouter,authenticate} = require('./src/routes/authentication')
+const seatsRouter = require('./src/routes/seats')
 
 const app = express()
 app.use(express.json())
@@ -12,14 +15,8 @@ app.use(cors())
 // console.log('hiii');
 
 app.use('/authentication',authRouter)
+app.use('/fetchBookings',authenticate ,seatsRouter)
 
-app.post('/ticketbooking',authenticate,(req,res)=>{
-    console.log(req.body);
-    
-    res.send({
-        msg:"hii"
-    })
-})
 mongoose.connect(process.env.DB_URL,{
     useCreateIndex:true,
     useNewUrlParser:true,
@@ -32,5 +29,4 @@ mongoose.connect(process.env.DB_URL,{
 })
 .catch(err=>{
     console.log('Connection to database failed...');
-    
 })
