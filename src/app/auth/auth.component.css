@@ -1,0 +1,11 @@
+:host{
+    display: block;
+    height: 100%;
+}
+main{
+    height: 100%;
+}
+.form{
+    padding: 50px;
+    margin:auto
+}

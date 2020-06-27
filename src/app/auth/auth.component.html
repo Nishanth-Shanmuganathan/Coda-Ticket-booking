@@ -1,0 +1,237 @@
+<main fxFlex="100" fxLayout="row" fxLayoutAlign="space-evenly stretch">
+  <mat-card class="form">
+    <form
+      novalidate
+      [formGroup]="signupForm"
+      (ngSubmit)="onSignup()"
+      *ngIf="helperFirstUser; else login"
+    >
+      <table cellpadding="5">
+        <mat-error class="server-error" *ngIf="helperServerError">{{
+          helperServerError
+        }}</mat-error>
+        <tr>
+          <td colspan="2">
+            <mat-form-field fxFill>
+              <mat-label>Email Id</mat-label>
+              <input
+                matInput
+                formControlName="email"
+                matNativeControl
+                type="text"
+                placeholder="Enter your email id..."
+              />
+              <button type="button" mat-icon-button matSuffix disabled>
+                <mat-icon>email</mat-icon>
+              </button>
+              <mat-error *ngIf="signupForm.get('email').errors?.required">
+                E-mail Id is required...
+              </mat-error>
+              <mat-error *ngIf="signupForm.get('email').errors?.email">
+                E-mail Id invalid...
+              </mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <mat-form-field fxFill>
+              <mat-label>Password</mat-label>
+              <input
+                formControlName="password"
+                matInput
+                [type]="helperPasswordVisible ? 'text' : 'password'"
+                placeholder="Enter your password..."
+              />
+              <button
+                type="button"
+                mat-icon-button
+                matSuffix
+                (click)="helperPasswordVisible = !helperPasswordVisible"
+              >
+                <mat-icon>{{
+                  helperPasswordVisible ? "visibility_off" : "visibility"
+                }}</mat-icon>
+              </button>
+              <mat-hint>Should between 8 - 12 characters</mat-hint>
+              <mat-error *ngIf="signupForm.get('password').errors?.required">
+                Password is required...
+              </mat-error>
+              <mat-error
+                *ngIf="
+                  !signupForm.get('password').errors?.required &&
+                  signupForm.get('password').status === 'INVALID'
+                "
+              >
+                Password invalid...
+              </mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <mat-form-field fxFill>
+              <mat-label>Confirm Password</mat-label>
+              <input
+                matInput
+                formControlName="confirmPassword"
+                [type]="helperConfirmPasswordVisible ? 'text' : 'password'"
+                placeholder="Enter your password..."
+                (keyup)="checkMatch()"
+              />
+              <button
+                type="button"
+                mat-icon-button
+                matSuffix
+                (click)="
+                  helperConfirmPasswordVisible = !helperConfirmPasswordVisible
+                "
+              >
+                <mat-icon>{{
+                  helperConfirmPasswordVisible ? "visibility_off" : "visibility"
+                }}</mat-icon>
+              </button>
+              <mat-error
+                *ngIf="signupForm.get('confirmPassword').errors?.required"
+              >
+                Confirm Password is required...
+              </mat-error>
+              <mat-error
+                *ngIf="
+                  !signupForm.get('confirmPassword').errors?.required &&
+                  signupForm.get('confirmPassword').errors?.invalid
+                "
+              >
+                Passwords mismatched...
+              </mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td fxLayoutAlign="center">
+            <button
+              [type]="
+                signupForm.invalid && !passwordMatch ? 'button' : 'submit'
+              "
+              mat-raised-button
+              class="btn-block"
+              color="primary"
+              [disabled]=""
+            >
+              <span>
+                {{
+                  helperStatus === "pristine" ? "Register" : "Registering..."
+                }}</span
+              >
+            </button>
+          </td>
+          <td>
+            <button
+              type="button"
+              mat-raised-button
+              class="btn-block"
+              color="accent"
+              (click)="toggleUser()"
+            >
+              <span>Login</span>
+            </button>
+          </td>
+        </tr>
+      </table>
+    </form>
+
+    <ng-template #login>
+      <form novalidate [formGroup]="signinForm" (ngSubmit)="onSubmit()">
+        <mat-error class="server-error" *ngIf="helperServerError">{{
+          helperServerError
+        }}</mat-error>
+        <table cellpadding="5">
+          <tr>
+            <td colspan="2">
+              <mat-form-field fxFill>
+                <mat-label>Email Id</mat-label>
+                <input
+                  formControlName="email"
+                  matNativeControl
+                  type="text"
+                  placeholder="Enter your email id..."
+                />
+                <button type="button" mat-icon-button matSuffix disabled>
+                  <mat-icon>email</mat-icon>
+                </button>
+                <mat-error *ngIf="signinForm.get('email').errors?.required">
+                  E-mail Id is required...
+                </mat-error>
+                <mat-error *ngIf="signinForm.get('email').errors?.email">
+                  E-mail Id invalid...
+                </mat-error>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <mat-form-field fxFill>
+                <mat-label>Password</mat-label>
+                <input
+                  formControlName="password"
+                  matInput
+                  [type]="helperPasswordVisible ? 'text' : 'password'"
+                  placeholder="Enter your password..."
+                />
+                <button
+                  type="button"
+                  mat-icon-button
+                  matSuffix
+                  (click)="helperPasswordVisible = !helperPasswordVisible"
+                >
+                  <mat-icon>{{
+                    helperPasswordVisible ? "visibility_off" : "visibility"
+                  }}</mat-icon>
+                </button>
+                <mat-hint>Should between 8 - 12 characters</mat-hint>
+                <mat-error *ngIf="signinForm.get('password').errors?.required">
+                  Password is required...
+                </mat-error>
+                <mat-error
+                  *ngIf="
+                    !signinForm.get('password').errors?.required &&
+                    signinForm.get('password').status === 'INVALID'
+                  "
+                >
+                  Password invalid...
+                </mat-error>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td fxLayoutAlign="center">
+              <button
+                type="submit"
+                mat-raised-button
+                class="btn-block"
+                color="primary"
+              >
+                <span>
+                  {{
+                    helperStatus === "pristine" ? "Login" : "Logging in..."
+                  }}</span
+                >
+              </button>
+            </td>
+            <td>
+              <button
+                type="button"
+                mat-raised-button
+                class="btn-block"
+                color="accent"
+                (click)="toggleUser()"
+              >
+                <span>Register</span>
+              </button>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </ng-template>
+  </mat-card>
+</main>
