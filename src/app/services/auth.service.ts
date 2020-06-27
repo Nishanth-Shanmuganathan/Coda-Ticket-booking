@@ -16,12 +16,12 @@ export class AuthService {
 
   constructor(public http: HttpClient, private router: Router) {}
 
-  public registerUser(auth: Auth, advertise: boolean) {
-    const authDetails = { ...auth, advertise };
+  public registerUser(auth: Auth) {
+    
     return this.http
-      .post<{ token: string; admin: boolean }>(
-        environment + '/authentication/register',
-        authDetails
+      .post<{ token: string }>(
+        environment.server_url + 'authentication/register',
+        auth
       )
       .pipe(
         tap((res) => {
@@ -34,12 +34,14 @@ export class AuthService {
 
   public loginUser(auth: Auth) {
     return this.http
-      .post<{ token: string; admin: boolean }>(
-        environment + '/authentication/login',
+      .post<{ token: string}>(
+        environment.server_url + 'authentication/login',
         auth
       )
       .pipe(
         tap((res) => {
+          console.log(res);
+          
           this.token = res.token;
           localStorage.setItem('token', this.token);
           this.loggedIn.next(this.token);
@@ -47,10 +49,10 @@ export class AuthService {
       );
   }
 
-  // public getToken() {
-  //   this.token = localStorage.getItem('token');
-  //   this.loggedIn.next([this.token, this.admin]);
-  // }
+  public getToken() {
+    this.token = localStorage.getItem('token');
+    this.loggedIn.next(this.token);
+  }
 
   // public logout() {
   //   this.token = null;

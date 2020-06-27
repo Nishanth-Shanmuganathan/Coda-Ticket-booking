@@ -14,7 +14,7 @@ export class AuthComponent implements OnInit {
   signupForm: FormGroup;
   passwordMatch = false;
 
-  helperFirstUser = true;
+  helperFirstUser = false;
   helperStatus = 'pristine';
   helperServerError: String;
   helperPasswordVisible = false;
@@ -34,13 +34,12 @@ export class AuthComponent implements OnInit {
         Validators.required,
         Validators.minLength(6),
         Validators.maxLength(12),
-      ]),
-      advertise: new FormControl(false),
+      ])
     });
 
     this.signinForm = new FormGroup({
-      email: new FormControl(null, [Validators.required, Validators.email]),
-      password: new FormControl(null, [
+      email: new FormControl('nishanth@test.com', [Validators.required, Validators.email]),
+      password: new FormControl('password', [
         Validators.required,
         Validators.minLength(8),
         Validators.maxLength(12),
@@ -62,17 +61,17 @@ export class AuthComponent implements OnInit {
       this.helperStatus = 'pristine';
       return;
     }
-    console.log(this.signinForm.value);
+    // console.log(this.signinForm.value);
     const loginCredentials: Auth = {
       email: this.signinForm.value.email,
       password: this.signinForm.value.password,
     };
-    console.log(loginCredentials);
+    // console.log(loginCredentials);
     this.authService.loginUser(loginCredentials).subscribe(
       (res) => {
         this.helperStatus = 'pristine';
         if (res.token) {
-          this.route.navigate(['']);
+          this.route.navigate(['home']);
         }
       },
       (err) => {
@@ -95,12 +94,12 @@ export class AuthComponent implements OnInit {
     };
     console.log(regCredentials);
     this.authService
-      .registerUser(regCredentials, this.signupForm.value.advertise)
+      .registerUser(regCredentials)
       .subscribe(
         (res) => {
           this.helperStatus = 'pristine';
           if (res.token) {
-            this.route.navigate(['']);
+            this.route.navigate(['home']);
           }
         },
         (err) => {
