@@ -1,22 +1,41 @@
-:host{
-    display: block;
-    height: 100%;
+:host {
+  display: block;
+  height: 100%;
 }
-main{
-    height: 100%;
+
+main {
+  height: 100%;
 }
-.form{
-    padding: 50px;
-    margin:auto
+
+.form {
+  padding: 50px;
+  margin: auto
 }
-a{
-    cursor: pointer;
-    color: #3F51B5;
+
+a {
+  cursor: pointer;
+  color: #3F51B5;
 }
+
 .server-error {
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid red;
-    text-align: center;
-    background-color: rgb(255, 239, 239);
-  }
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid red;
+  text-align: center;
+  background-color: rgb(255, 239, 239);
+}
+
+.left,
+.right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.right {
+  transform: scaleX(-1);
+}
+
+img {
+  width: 70%;
+}

@@ -1,4 +1,7 @@
 <main fxFlex="100" fxLayout="row" fxLayoutAlign="space-evenly stretch">
+  <div fxHide.lt-md class="left">
+    <img src="./../../assets/images/movie.jpg" />
+  </div>
   <div class="form">
     <form
       novalidate
@@ -11,7 +14,7 @@
           helperServerError
         }}</mat-error>
         <tr>
-          <td >
+          <td>
             <mat-form-field fxFill>
               <mat-label>Email Id</mat-label>
               <input
@@ -34,7 +37,7 @@
           </td>
         </tr>
         <tr>
-          <td >
+          <td>
             <mat-form-field fxFill>
               <mat-label>Password</mat-label>
               <input
@@ -69,7 +72,7 @@
           </td>
         </tr>
         <tr>
-          <td >
+          <td>
             <mat-form-field fxFill>
               <mat-label>Confirm Password</mat-label>
               <input
@@ -127,7 +130,7 @@
           </td>
         </tr>
         <tr>
-          <td style="text-align: center;">
+          <td style="text-align: center">
             Already an user ? <a (click)="toggleUser()">Login</a>
           </td>
         </tr>
@@ -141,7 +144,7 @@
         }}</mat-error>
         <table cellpadding="5">
           <tr>
-            <td >
+            <td>
               <mat-form-field fxFill>
                 <mat-label>Email Id</mat-label>
                 <input
@@ -163,7 +166,7 @@
             </td>
           </tr>
           <tr>
-            <td >
+            <td>
               <mat-form-field fxFill>
                 <mat-label>Password</mat-label>
                 <input
@@ -213,11 +216,14 @@
               </button>
             </td>
           </tr>
-          <tr style="text-align: center;">
+          <tr style="text-align: center">
             <td>New User ? <a (click)="toggleUser()">Register</a></td>
           </tr>
         </table>
       </form>
     </ng-template>
+  </div>
+  <div fxHide.lt-md class="right">
+    <img src="./../../assets/images/movie.jpg" />
   </div>
 </main>
